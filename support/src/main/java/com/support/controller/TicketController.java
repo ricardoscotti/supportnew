@@ -13,27 +13,40 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.moradores.model.Morador;
 import com.support.model.Ticket;
 import com.support.repository.TicketRepository;
 
 @RestController
 @RequestMapping("/ticket")
 public class TicketController {
-	
+
 	@Autowired
 	private TicketRepository ticketRepository;
+
+	@GetMapping
+	public ArrayList<Ticket> listar(@RequestParam String id_usuario) {
+		List<Ticket> tickets = ticketRepository.findAll();
+		ArrayList<Ticket> lista = new ArrayList<Ticket>();
+		for (Ticket u : tickets) {
+			if (u.getId_usuario().equals(id_usuario)) {
+
+				lista.add(u);
+			}
+		}
+		return lista;
+	}
+
 	
 	
-	  @GetMapping
-	  public ArrayList<Ticket> listar(@RequestParam String id_usuario) { 
-		  List<Ticket> tickets = ticketRepository.findAll();
-		  ArrayList<Ticket> lista = new ArrayList<Ticket>();
-		  	for (Ticket u : tickets) {
-	            if (u.getId_usuario().equals(id_usuario)) {
-	            	
-	            	lista.add(u);
-	                }
-	           }
-		  return lista;
-	
-}}
+	  @PostMapping public Ticket adicionar(@RequestBody Ticket ticket) { return
+	   ticketRepository.save(ticket); }
+	 
+	 
+
+	@DeleteMapping("/{id}")
+	public void remover(@PathVariable Long id) {
+		ticketRepository.deleteById(id);
+	}
+
+}
