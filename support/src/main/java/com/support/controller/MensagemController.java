@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -42,5 +43,13 @@ public class MensagemController {
 		public void remover(@PathVariable Long id) {
 			 mensagemRepository.deleteById(id);
 		}
+	  
+	  @PostMapping public Mensagem adicionar(@RequestBody Mensagem mensagem) { return
+			   mensagemRepository.save(mensagem); }
+	  
+	  @PutMapping("/{id}")
+		public void updateMensagem(@RequestBody Mensagem mensagem) {
+		        mensagemRepository.save(mensagem);
+		  } 
 
 }
