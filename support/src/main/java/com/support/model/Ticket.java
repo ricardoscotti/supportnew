@@ -23,6 +23,9 @@ public class Ticket {
     
     @Column(name = "status")
     private String status;
+    
+    @Column(name = "descricao")
+    private String descricao;
 
 	
 	  @Temporal(TemporalType.TIMESTAMP)
@@ -63,6 +66,14 @@ public class Ticket {
 		this.status = status;
 	}
 
+	public String getDescricao() {
+		return descricao;
+	}
+
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
+	}
+
 	public Date getLastUpdate() {
 		return LastUpdate;
 	}
@@ -70,9 +81,6 @@ public class Ticket {
 	public void setLastUpdate(Date lastUpdate) {
 		LastUpdate = lastUpdate;
 	}
-	 
-
-	 
 
     
     
