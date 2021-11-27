@@ -1,5 +1,9 @@
 package com.support.model;
 
+
+
+import java.util.Date;
+
 import javax.persistence.*;
 
 @Entity
@@ -16,6 +20,16 @@ public class Ticket {
 
     @Column(name = "id_usuario")
     private String id_usuario;
+    
+    @Column(name = "status")
+    private String status;
+
+	
+	  @Temporal(TemporalType.TIMESTAMP)
+	  
+	  @Column(name = "lastUpdate") private Date LastUpdate;
+	  
+	  @PrePersist private void onCreate() { LastUpdate = new Date(); }
 
 	public Long getId() {
 		return id;
@@ -40,7 +54,25 @@ public class Ticket {
 	public void setId_usuario(String id_usuario) {
 		this.id_usuario = id_usuario;
 	}
- 
+
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
+	public Date getLastUpdate() {
+		return LastUpdate;
+	}
+
+	public void setLastUpdate(Date lastUpdate) {
+		LastUpdate = lastUpdate;
+	}
+	 
+
+	 
 
     
     
