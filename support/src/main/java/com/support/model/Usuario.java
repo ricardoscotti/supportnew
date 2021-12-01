@@ -19,6 +19,9 @@ public class Usuario {
     
     @Column(name = "tipo")
     private String tipo;
+    
+    @Column(name = "nome_usuario")
+    private String nome;
 
 	public Long getId() {
 		return id;
@@ -51,6 +54,16 @@ public class Usuario {
 	public void setTipo(String tipo) {
 		this.tipo = tipo;
 	}
+
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+	
 
     
     

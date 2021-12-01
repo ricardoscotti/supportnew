@@ -53,5 +53,11 @@ public class TicketController {
 	public void updateTicket(@RequestBody Ticket ticket) {
 	        ticketRepository.save(ticket);
 	  }
+	
+	@GetMapping("/all")
+	public List<Ticket> listarTodos() {
+		List<Ticket> tickets = ticketRepository.findAll();
+		return tickets; 
+	  }
 
 }

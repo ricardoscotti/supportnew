@@ -14,8 +14,9 @@ public class Mensagem {
     @Column(name = "mensagem")
     private String mensagem;
 
-    @Column(name = "id_usuario")
-    private String id_usuario;
+    @OneToOne
+    @JoinColumn(name = "id_usuario")
+    private Usuario usuario;
     
     @Column(name = "id_ticket")
     private String id_ticket;
@@ -36,12 +37,14 @@ public class Mensagem {
 		this.mensagem = mensagem;
 	}
 
-	public String getId_usuario() {
-		return id_usuario;
+
+
+	public Usuario getUsuario() {
+		return usuario;
 	}
 
-	public void setId_usuario(String id_usuario) {
-		this.id_usuario = id_usuario;
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
 	}
 
 	public String getId_ticket() {
